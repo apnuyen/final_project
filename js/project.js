@@ -1,24 +1,39 @@
 $(document).ready(function(){
 
-$(window).scroll(function () {
-    
-    var scrollonscreen = $(window).scrollTop() + $(window).height();
-    
-    // Scroll to top function
-    if(scrollonscreen > $(window).height() + 350){
-      $('#top-link').css("bottom", "22px");
-    }
-    else {
-      $('#top-link').css("bottom", "-60px");
-    }
+	var mn = $(".main-nav");
+	    mns = "main-nav-scrolled";
+	    hdr = $('header').height() - 50;
 
-});
+	$(window).scroll(function() {
+	  if( $(this).scrollTop() > hdr) {
+	    mn.addClass(mns);
+	  } else {
+	    mn.removeClass(mns);
+	  }
+	});
 
- // Scroll to top event
-$('#top-link').on('click', function(e){
-  $('body,html').stop().animate({
-    scrollTop:0
-  },800,'easeOutCubic')
-  return false;
-});
+	var offset = 300,
+			//browser window scroll (in pixels) after which the "back to top" link opacity is reduced
+		offset_opacity = 1200,
+			//duration of the top scrolling animation (in ms)
+		scroll_top_duration = 700,
+			//grab the "back to top" link
+		$back_to_top = $('.cd-top');
+
+		//hide or show the "back to top" link
+	$(window).scroll(function(){
+		( $(this).scrollTop() > offset ) ? $back_to_top.addClass('cd-is-visible') : $back_to_top.removeClass('cd-is-visible cd-fade-out');
+		if( $(this).scrollTop() > offset_opacity ) { 
+				$back_to_top.addClass('cd-fade-out');
+		}
+	});
+
+		//smooth scroll to top
+	$back_to_top.on('click', function(event){
+		event.preventDefault();
+		$('body,html').animate({
+			scrollTop: 0 ,
+			 }, scroll_top_duration
+		);
+	});
 });

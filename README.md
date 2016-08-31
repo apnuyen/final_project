@@ -1,3 +1,13 @@
+Design
+Colors:
+Navy blue: #2A265C
+Light peach #fce6d2
+
+Fonts: 
+Sans-serif:
+headers:
+
+
 ![GeneralAssemb.ly](https://github.com/generalassembly/ga-ruby-on-rails-for-devs/raw/master/images/ga.png "GeneralAssemb.ly")
 
 # FEWD: Final Project
